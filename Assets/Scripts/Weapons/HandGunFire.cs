@@ -7,7 +7,9 @@ public class HandGunFire : MonoBehaviour
     public GameObject theGun;
     public GameObject muzzleFlash;
     public AudioSource gunFire;
+    public AudioSource emptyAmmo;
     public bool isFiring = false;
+    public GameObject player;
 
     void Update()
     {
@@ -23,14 +25,21 @@ public class HandGunFire : MonoBehaviour
 
     IEnumerator FiringHandgun()
     {
-        isFiring = true;
-        theGun.GetComponent<Animator>().SetTrigger("Fire");
-        muzzleFlash.SetActive(true);
-        gunFire.Play();
-        yield return new WaitForSeconds(0.05f);
-        muzzleFlash.SetActive(false);
-        //yield return new WaitForSeconds(0.25f);
-        //theGun.GetComponent<Animator>().Play("New State");
-        isFiring = false;
+        GlobalAmmo ammo = player.GetComponent<GlobalAmmo>();
+        if (ammo.GunFire())
+        {
+            isFiring = true;
+            theGun.GetComponent<Animator>().SetTrigger("Fire");
+            muzzleFlash.SetActive(true);
+            gunFire.Play();
+            yield return new WaitForSeconds(0.05f);
+            muzzleFlash.SetActive(false);
+            //yield return new WaitForSeconds(0.25f);
+            isFiring = false;
+        }
+        else
+        {
+            emptyAmmo.Play();
+        }
     }
 }
