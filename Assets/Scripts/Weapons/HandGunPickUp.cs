@@ -9,10 +9,12 @@ public class HandGunPickUp : MonoBehaviour
     public GameObject collectableGun;
     public AudioSource gunPickupSound;
     public GameObject pickUpDisplay;
+    public GameObject gunThumpnail;
 
     private void OnTriggerEnter(Collider other)
     {
         handGun.SetActive(true);
+        gunThumpnail.SetActive(true);
         collectableGun.SetActive(false);
         gunPickupSound.Play();
         other.GetComponent<GlobalAmmo>().PickupAmmo(5);
