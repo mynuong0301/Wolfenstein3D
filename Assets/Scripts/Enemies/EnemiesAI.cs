@@ -10,8 +10,9 @@ public class EnemiesAI : MonoBehaviour
     public AudioSource gunFireSound;
     public bool isFiring = false;
     public float fireRate = 1.5f;
-    int genHurt;
-    public AudioSource[] hurtSound;
+    public GameObject ammoPrefab;
+    public Transform firePoint;
+
 
     // Update is called once per frame
     void Update()
@@ -35,14 +36,15 @@ public class EnemiesAI : MonoBehaviour
     IEnumerator EnemyFire()
     {
         isFiring = true;
-        theEnemies.GetComponent<Animator>().Play("demo_combat_shoot", -1, 0);
+        //theEnemies.GetComponent<Animator>().Play("demo_combat_shoot", -1, 0);
         theEnemies.GetComponent<Animator>().Play("demo_combat_shoot");
         gunFireSound.Play();
-        GlobalHealth.healthValue -= 5;
+        //Spawn ammo
+        GameObject newAmmo = Instantiate(ammoPrefab, firePoint.position, firePoint.rotation);
+        newAmmo.GetComponent<AmmoController>().FirePoint = firePoint;
+        newAmmo.transform.tag = "Ammo";
+
         lookingAtPlayer = true;
-        genHurt = Random.Range(0, 3);
-        yield return new WaitForSeconds(0.1f);
-        hurtSound[genHurt].Play();
         yield return new WaitForSeconds(fireRate);
         isFiring = false;
     }

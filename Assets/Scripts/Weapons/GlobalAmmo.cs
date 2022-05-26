@@ -31,7 +31,7 @@ public class GlobalAmmo : MonoBehaviour
         ammoDisplay.GetComponent<Text>().text = "" + ammoCount;
     }
 
-    public bool GunFire()
+    public bool isAmmoExist()
     {
         if (ammoCount <= 0)
         {

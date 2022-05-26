@@ -16,7 +16,7 @@ public class DoorOpenFirst : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (isClosed)
+        if (isClosed && other.gameObject.tag == "Player")
         {
             doorFX.Play();
             doorAnim.SetTrigger("Open");
@@ -26,8 +26,11 @@ public class DoorOpenFirst : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        StartCoroutine(CloseDoor());
-        doorAnim.SetTrigger("Close");
+        if (other.gameObject.tag == "Player")
+        {
+            StartCoroutine(CloseDoor());
+            doorAnim.SetTrigger("Close");
+        }
     }
 
     IEnumerator CloseDoor()

@@ -5,21 +5,40 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameObject player;
+    public GameObject player; 
+    public GameObject hurtFlash;
+    int genHurt;
+    public AudioSource[] hurtSound;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (GlobalHealth.healthValue <= 0)
+        if (GlobalHealth.isDead)
         {
             player.transform.tag = "Untagged";
             player.GetComponent<FirstPersonController>().enabled = false;
         }
+        else
+        {
+            player.transform.tag = "Player";
+            player.GetComponent<FirstPersonController>().enabled = true;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ammo")
+        {
+            GlobalHealth.healthValue -= 5;
+            genHurt = Random.Range(0, 3);
+            hurtSound[genHurt].Play();
+            hurtFlash.SetActive(true);
+            StartCoroutine(waitForHurtFlashEnd(0.2f));
+        }
+    }
+
+    IEnumerator waitForHurtFlashEnd(float value)
+    {
+        yield return new WaitForSeconds(value);
+        hurtFlash.SetActive(false);
     }
 }

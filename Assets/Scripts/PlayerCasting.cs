@@ -6,6 +6,7 @@ public class PlayerCasting : MonoBehaviour
 {
     public static float distanceFromTarget;
     public float toTarget;
+    public string targetName;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class PlayerCasting : MonoBehaviour
         {
             toTarget = hit.distance;
             distanceFromTarget = toTarget;
+            targetName = hit.transform.name;
         }
 
     }

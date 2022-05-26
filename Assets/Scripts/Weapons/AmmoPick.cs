@@ -11,14 +11,16 @@ public class AmmoPick : MonoBehaviour
 
     private IEnumerator OnTriggerEnter(Collider other)
     {
-        //ammoBox.SetActive(false);
-        this.GetComponent<Animator>().SetTrigger("Open");
-        yield return new WaitForSeconds(0.8f);
-        ammoPickupSound.Play();
-        other.GetComponent<GlobalAmmo>().PickupAmmo(10);
-        pickUpDisplay.SetActive(false);
-        pickUpDisplay.GetComponent<Text>().text = "Pick up 10 bullets";
-        pickUpDisplay.SetActive(true);
+        if (other.transform.tag == "Player" && !GlobalHealth.isDead)
+        {
+            this.GetComponent<Animator>().SetTrigger("Open");
+            yield return new WaitForSeconds(0.8f);
+            ammoPickupSound.Play();
+            other.GetComponent<GlobalAmmo>().PickupAmmo(10);
+            pickUpDisplay.SetActive(false);
+            pickUpDisplay.GetComponent<Text>().text = "Pick up 10 bullets";
+            pickUpDisplay.SetActive(true);
+        }
     }
 
 }
