@@ -7,6 +7,9 @@ TagManager:
   - Shootable
   - Ammo
   - Enemy
+  - InteractDisplay
+  - Gold_Ignots
+  - Gold_Bar
   layers:
   - Default
   - TransparentFX
