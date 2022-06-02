@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public GameObject hurtFlash;
     int genHurt;
     public AudioSource[] hurtSound;
+    public static bool isHadKey = false;
 
     private void Update()
     {
