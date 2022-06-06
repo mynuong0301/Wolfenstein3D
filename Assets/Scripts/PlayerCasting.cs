@@ -25,15 +25,5 @@ public class PlayerCasting : MonoBehaviour
             targetName = hit.transform.name;
         }
 
-        //checkTargetKey();
     }
-
-    //void checkTargetKey()
-    //{
-    //    if (targetName == "KeyTrigger")
-    //    {
-    //        Key.isTarget = true;
-    //    }
-    //    else Key.isTarget = false;
-    //}
 }

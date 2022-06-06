@@ -10,7 +10,7 @@ public class Pill : Interactable
 
     public override void OnInteract()
     {
-        InteractText = "Press F to pickup";
+        InteractText = "Press F to use pill";
 
         displayText.GetComponent<Text>().text = InteractText;
         displayText.SetActive(true);

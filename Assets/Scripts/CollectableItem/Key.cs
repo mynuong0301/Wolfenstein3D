@@ -9,6 +9,7 @@ public class Key : Interactable
     public GameObject key;
     public GameObject keyUI;
     public AudioSource collectSound;
+    public GameObject pickUpDisplay;
 
     public override void OnInteract()
     {
@@ -24,7 +25,9 @@ public class Key : Interactable
             collectSound.Play();
             keyUI.SetActive(true);
             isInteracting = false;
-            //isTarget = false;
+            pickUpDisplay.SetActive(false);
+            pickUpDisplay.GetComponent<Text>().text = "Pick up key";
+            pickUpDisplay.SetActive(true);
             displayText.GetComponent<Text>().text = "";
             key.SetActive(false);
         }

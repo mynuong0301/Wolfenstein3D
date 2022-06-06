@@ -15,6 +15,7 @@ public class GlobalHealth : MonoBehaviour
     public GameObject deadPanel;
     public GameObject player;
     public Transform respawnPoint;
+    public GameObject fillColor;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +41,7 @@ public class GlobalHealth : MonoBehaviour
         internalHealth = healthValue;
         SetHealth(healthValue);
         healthDisplay.GetComponent<Text>().text = "" + internalHealth;
+        HP25percent();
     }
 
     public static void changeHealth(int value)
@@ -63,5 +65,18 @@ public class GlobalHealth : MonoBehaviour
         healthValue = maxHealth;
         player.transform.position = respawnPoint.position;
         player.transform.rotation = respawnPoint.rotation;
+    }
+
+    void HP25percent()
+    {
+        if (healthValue <= maxHealth*0.25)
+        {
+            fillColor.GetComponent<Image>().color = new Color32(255, 0, 0, 120);
+        }
+        else if (healthValue <= maxHealth*0.5)
+        {
+            fillColor.GetComponent<Image>().color = new Color32(250, 159, 159, 150);
+        }
+        else fillColor.GetComponent<Image>().color = new Color32(226, 226, 226, 120);
     }
 }

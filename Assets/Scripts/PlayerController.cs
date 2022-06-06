@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (GlobalHealth.isDead)
+        if (GlobalHealth.isDead || FloorManager.isComplete)
         {
             player.transform.tag = "Untagged";
             player.GetComponent<FirstPersonController>().enabled = false;

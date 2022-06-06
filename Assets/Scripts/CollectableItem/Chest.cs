@@ -47,6 +47,7 @@ public class Chest : Interactable
                     GlobalScore.scoreValue += 50;
                 }
                 collectSound.Play();
+                FloorManager.treasureCount++;
                 gold.SetActive(false);
                 CollectableObjectNumber--;
                 isCollectable = false;

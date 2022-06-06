@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     int genHurt;
     public AudioSource[] hurtSound;
     public GameObject enemiesAI;
+    bool isDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,11 @@ public class EnemyController : MonoBehaviour
             enemiesAI.SetActive(false);
             enemy.GetComponent<Animator>().Play("demo_combat_death");
             enemy.GetComponent<LookPlayer>().enabled = false;
+            if (!isDead)
+            {
+                FloorManager.enemyCount++;
+                isDead = true;
+            }
         }
     }
 
