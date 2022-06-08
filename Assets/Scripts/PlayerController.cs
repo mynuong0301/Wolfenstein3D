@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
             genHurt = Random.Range(0, 3);
             hurtSound[genHurt].Play();
             hurtFlash.SetActive(true);
-            StartCoroutine(waitForHurtFlashEnd(0.2f));
+            StartCoroutine(waitForHurtFlashEnd(0.15f));
         }
     }
 
