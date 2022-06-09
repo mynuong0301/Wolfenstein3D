@@ -11,21 +11,6 @@ public class HandGunPickUp : Interactable
     public GameObject pickUpDisplay;
     public GameObject gunThumpnail;
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.tag == "Player" && !GlobalHealth.isDead)
-    //    {
-    //        handGun.SetActive(true);
-    //        gunThumpnail.SetActive(true);
-    //        collectableGun.SetActive(false);
-    //        gunPickupSound.Play();
-    //        other.GetComponent<GlobalAmmo>().PickupAmmo(5);
-    //        pickUpDisplay.SetActive(false);
-    //        pickUpDisplay.GetComponent<Text>().text = "Pick up Gun";
-    //        pickUpDisplay.SetActive(true);
-    //    }
-    //}
-
     public override void OnInteract()
     {
 
