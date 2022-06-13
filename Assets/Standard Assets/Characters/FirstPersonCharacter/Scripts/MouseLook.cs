@@ -26,9 +26,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_CharacterTargetRot = character.localRotation;
             m_CameraTargetRot = camera.localRotation;
 
-            //float mouseSensitivity = PlayerPrefs.GetFloat("mouseSensitivity");
-            //XSensitivity = mouseSensitivity;
-            //YSensitivity = mouseSensitivity;
+            float mouseSensitivity = PlayerPrefs.GetFloat("mouseSensitivity");
+            XSensitivity = mouseSensitivity;
+            YSensitivity = mouseSensitivity;
         }
 
 

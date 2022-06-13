@@ -27,6 +27,7 @@ public class SettingManager : MonoBehaviour
         int p_isFirstTime = PlayerPrefs.GetInt("isFirstTime");
         if (p_isFirstTime == 0)
         {
+            PlayerPrefs.SetInt("Level", 1);
             PlayerPrefs.SetInt("isFirstTime", 1);
             PlayerPrefs.SetFloat("movementSpeed", 5);
             PlayerPrefs.SetFloat("mouseSensitivity", 2);

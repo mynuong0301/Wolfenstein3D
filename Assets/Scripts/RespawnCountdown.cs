@@ -34,7 +34,7 @@ public class RespawnCountdown : MonoBehaviour
             respawnCountdown.text = "" + count;
             respawnCountdown.enabled = true;
             count--;
-            yield return new WaitForSeconds(0.9f);
+            yield return new WaitForSeconds(0.65f);
         }
         respawnCountdown.enabled = false;
     }

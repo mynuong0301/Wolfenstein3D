@@ -29,7 +29,8 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ammo")
         {
-            GlobalHealth.healthValue -= 5;
+            if (GlobalHealth.healthValue - 5 >= 0)
+                GlobalHealth.healthValue -= 5;
             genHurt = Random.Range(0, 3);
             hurtSound[genHurt].Play();
             hurtFlash.SetActive(true);

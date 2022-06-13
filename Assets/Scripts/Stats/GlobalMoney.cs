@@ -12,7 +12,7 @@ public class GlobalMoney : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        moneyValue = 0;
+        moneyValue = PlayerPrefs.GetInt("Money");
     }
 
     // Update is called once per frame
@@ -20,5 +20,6 @@ public class GlobalMoney : MonoBehaviour
     {
         internalMoney = moneyValue;
         moneyDisplay.GetComponent<Text>().text = "" + moneyValue;
+        PlayerPrefs.SetInt("Money", moneyValue);
     }
 }
