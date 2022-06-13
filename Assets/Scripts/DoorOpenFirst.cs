@@ -7,13 +7,12 @@ public class DoorOpenFirst : MonoBehaviour
     public GameObject theDoor;
     public AudioSource doorFX;
     public bool isLocked;
-    public static bool isUsedKey = false;
+    public bool isUsedKey;
     bool isClosed = true;
-    Animator doorAnim;
 
     private void Start()
     {
-        doorAnim = theDoor.GetComponent<Animator>();
+        isUsedKey = false;
     }
 
     private void Update()
@@ -37,7 +36,7 @@ public class DoorOpenFirst : MonoBehaviour
     void OpenDoor()
     {
         doorFX.Play();
-        doorAnim.SetTrigger("Open");
+        theDoor.GetComponent<Animator>().SetTrigger("Open");
         isClosed = false;
         isUsedKey = false;
     }
@@ -47,7 +46,7 @@ public class DoorOpenFirst : MonoBehaviour
         if (!isClosed && other.gameObject.tag == "Player")
         {
             StartCoroutine(CloseDoor());
-            doorAnim.SetTrigger("Close");
+            theDoor.GetComponent<Animator>().SetTrigger("Close");
         }
     }
 

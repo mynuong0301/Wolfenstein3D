@@ -4,6 +4,7 @@ using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
 
+
 #pragma warning disable 618, 649
 namespace UnityStandardAssets.Characters.FirstPerson
 {
@@ -92,7 +93,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_NextStep = m_StepCycle + .5f;
         }
 
-
+        public GameObject thePlayer;
         private void FixedUpdate()
         {
             float speed;

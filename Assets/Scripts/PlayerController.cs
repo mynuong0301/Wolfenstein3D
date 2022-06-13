@@ -11,6 +11,14 @@ public class PlayerController : MonoBehaviour
     public AudioSource[] hurtSound;
     public static bool isHadKey = false;
 
+    private void Start()
+    {
+        player.transform.tag = "Player";
+        player.GetComponent<FirstPersonController>().enabled = true;
+        GlobalHealth.isDead = false;
+        FloorManager.isComplete = false;
+    }
+
     private void Update()
     {
         if (GlobalHealth.isDead || FloorManager.isComplete)

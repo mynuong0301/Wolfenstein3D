@@ -35,11 +35,6 @@ public class MainMenuControl : MonoBehaviour
         SceneManager.LoadScene(FloorManager.myLevel);
     }
 
-    private void Update()
-    {
-        
-    }
-
     void GameInit()
     {
         float movementSpeed = PlayerPrefs.GetFloat("movementSpeed");

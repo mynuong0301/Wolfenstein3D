@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class LockedDoor : Interactable
 {
-    public GameObject doorTrigger;
-    //public AudioSource useKeySound;
+    //public GameObject doorTrigger;
+    public AudioSource useKeySound;
     public GameObject keyUI;
     bool isLocked = true;
 
@@ -19,11 +19,11 @@ public class LockedDoor : Interactable
             displayText.GetComponent<Text>().text = InteractText;
             displayText.SetActive(true);
 
-            if (isPressF && isInteracting)
+            if (isPressF && isInteracting && keyUI.activeInHierarchy)
             {
                 isPressF = false;
-                //useKeySound.Play();
-                DoorOpenFirst.isUsedKey = true;
+                useKeySound.Play();
+                this.gameObject.GetComponent<DoorOpenFirst>().isUsedKey = true;
                 keyUI.SetActive(false);
                 isInteracting = false;
                 isLocked = false;

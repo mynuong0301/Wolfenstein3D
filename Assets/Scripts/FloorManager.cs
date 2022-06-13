@@ -25,6 +25,7 @@ public class FloorManager : MonoBehaviour
         myLevel = PlayerPrefs.GetInt("Level");
         levelDisplay.GetComponent<Text>().text = "" + myLevel;
         levelCompleteDisplay.GetComponent<Text>().text = "LEVEL " + myLevel;
+        nextBtn.Select();
     }
 
     private void Update()
@@ -32,6 +33,12 @@ public class FloorManager : MonoBehaviour
         enemyDisplay.GetComponent<Text>().text = "" + enemyCount;
         treasureDisplay.GetComponent<Text>().text = "" + treasureCount;
         scoreDisplay.GetComponent<Text>().text = "" + GlobalScore.scoreValue;
+
+        if (FloorManager.myLevel == 2 && Input.GetKeyDown(KeyCode.F) && isComplete)
+        {
+            Debug.Log("e");
+            BackMenu();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -42,14 +49,14 @@ public class FloorManager : MonoBehaviour
             completePanel.SetActive(true);
             isComplete = true;
             this.gameObject.GetComponent<BoxCollider>().enabled = false;
-            myLevel++;
+            if (myLevel + 1 <= 2) myLevel++;
+            else myLevel = 2;
             PlayerPrefs.SetInt("Level", myLevel);
         }
     }
 
     public void NextLevel()
     {
-        Debug.Log("next");
         SceneManager.LoadScene(myLevel);
     }
 
